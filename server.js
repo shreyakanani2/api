@@ -3,6 +3,7 @@ const dotenv = require("dotenv");
 const morgan = require("morgan");
 const connectDB = require("./config/db");
 const products = require("./routes/product");
+const cors = require('cors');
 const colors = require("colors");
 
 //loads env var
@@ -12,6 +13,10 @@ dotenv.config({ path: "./config/config.env" });
 connectDB();
 
 const app = express();
+
+
+// Enable CORS
+app.use(cors());
 
 //body parse
 app.use(express.json());
