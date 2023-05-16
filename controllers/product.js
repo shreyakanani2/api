@@ -19,7 +19,7 @@ exports.getProduct = async (req, res) => {
     res.status(200).json({ success: true, data: products });
   } catch (error) {
     res.status(400).json({ success: false });
-  }
+  } 
 };
 
 exports.createProducts = async (req, res) => {
