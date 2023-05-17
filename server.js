@@ -3,8 +3,11 @@ const dotenv = require("dotenv");
 const morgan = require("morgan");
 const connectDB = require("./config/db");
 const products = require("./routes/product");
+const auth = require("./routes/auth");
+
 const cors = require('cors');
 const colors = require("colors");
+const errorHandler = require("./middleware/error");
 
 //loads env var
 dotenv.config({ path: "./config/config.env" });
@@ -26,6 +29,10 @@ if (process.env.NODE_ENV === "development") {
 }
 
 app.use("/api/products", products);
+app.use("/api/auth", auth);
+
+
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 6000;
 
