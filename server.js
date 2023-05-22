@@ -4,7 +4,7 @@ const morgan = require("morgan");
 const connectDB = require("./config/db");
 const products = require("./routes/product");
 const auth = require("./routes/auth");
-
+const cookierParser = require("cookie-parser");
 const cors = require('cors');
 const colors = require("colors");
 const errorHandler = require("./middleware/error");
@@ -23,6 +23,10 @@ app.use(cors());
 
 //body parse
 app.use(express.json());
+
+//cookie parser
+
+app.use(cookierParser());
 
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
