@@ -11,7 +11,7 @@ const xss = require("xss-clean");
 const rateLimit = require("express-rate-limit");
 const hpp = require("hpp");
 const cors = require("cors");
-const path = require('path');
+const path = require("path");
 const colors = require("colors");
 const errorHandler = require("./middleware/error");
 
@@ -23,8 +23,13 @@ connectDB();
 
 const app = express();
 
+const corsOptions = {
+  origin: true,
+  credentials: true,
+};
+
 // Enable CORS
-app.use(cors());
+app.use(cors(corsOptions));
 
 //body parse
 app.use(express.json());
@@ -58,7 +63,7 @@ app.use(limit);
 app.use(hpp());
 
 // Set static folder
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/api/products", products);
 app.use("/api/auth", auth);
