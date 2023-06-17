@@ -52,7 +52,8 @@ const sendTokenResponse = (user, statusCode, res) => {
       Date.now() + process.env.JWT_COOKIE_EXPIRE * 24 * 60 * 60 * 1000
     ),
     httpOnly: true,
-    sameSite: false
+    sameSite: false,
+    secure: false
   };
 
   if (process.env.NODE_ENV === "production") {
